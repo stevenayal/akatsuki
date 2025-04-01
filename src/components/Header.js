@@ -8,8 +8,21 @@ function Header() {
             <div className="container">
                 <div className="row align-items-center py-3">
                     <div className="col-md-3 col-sm-12 text-center mb-3 mb-md-0">
-                        <img src="../../imagenes/2.jpg" alt="Logo" className="img-fluid rounded-circle mb-2" style={{ width: '80px', height: '80px' }} />
-                        <h1 className="h4">Tienda Online Akatsuki</h1>
+                        <Link to="/" className="text-decoration-none">
+                            <img 
+                                src={process.env.PUBLIC_URL + '/akatsuki.jpg'} 
+                                alt="Logo Akatsuki" 
+                                className="img-fluid rounded-circle mb-2" 
+                                style={{ 
+                                    width: '80px', 
+                                    height: '80px',
+                                    objectFit: 'cover',
+                                    border: '2px solid #fff',
+                                    boxShadow: '0 0 10px rgba(255,255,255,0.3)'
+                                }} 
+                            />
+                            <h1 className="h4 text-white">Tienda Online Akatsuki</h1>
+                        </Link>
                     </div>
                     <div className="col-md-9 col-sm-12">
                         <nav className="navbar navbar-expand-lg navbar-dark">

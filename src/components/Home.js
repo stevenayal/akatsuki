@@ -22,13 +22,14 @@ function Home() {
                         <img 
                             src={process.env.PUBLIC_URL + '/akatsuki.jpg'} 
                             alt="Logo Akatsuki" 
-                            className="img-fluid rounded-circle"
+                            className="img-fluid"
                             style={{
-                                width: '300px',
-                                height: '300px',
+                                width: '500px',
+                                height: '250px',
                                 objectFit: 'cover',
                                 border: '4px solid #343a40',
-                                boxShadow: '0 0 20px rgba(0,0,0,0.3)'
+                                boxShadow: '0 0 20px rgba(0,0,0,0.3)',
+                                borderRadius: '250px 250px 250px 250px / 125px 125px 125px 125px'
                             }}
                         />
                     </div>

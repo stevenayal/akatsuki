@@ -12,13 +12,14 @@ function Header() {
                             <img 
                                 src={process.env.PUBLIC_URL + '/akatsuki.jpg'} 
                                 alt="Logo Akatsuki" 
-                                className="img-fluid rounded-circle mb-2" 
+                                className="img-fluid mb-2" 
                                 style={{ 
-                                    width: '80px', 
+                                    width: '160px', 
                                     height: '80px',
                                     objectFit: 'cover',
                                     border: '2px solid #fff',
-                                    boxShadow: '0 0 10px rgba(255,255,255,0.3)'
+                                    boxShadow: '0 0 10px rgba(255,255,255,0.3)',
+                                    borderRadius: '80px 80px 80px 80px / 40px 40px 40px 40px'
                                 }} 
                             />
                             <h1 className="h4 text-white">Tienda Online Akatsuki</h1>

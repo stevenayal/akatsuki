@@ -38,7 +38,17 @@ function App() {
               </Routes>
             </main>
             <Footer />
-            <ToastContainer />
+            <ToastContainer
+              position="bottom-right"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
           </div>
         </CartProvider>
       </CurrencyProvider>

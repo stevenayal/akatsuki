@@ -12,7 +12,7 @@ function ProductList() {
             nombre: 'Akatsuki Cloud Sweater',
             precio: 49.99,
             descripcion: 'Sweater con el símbolo de la nube de Akatsuki. Perfecto para climas fríos.',
-            imagen: process.env.PUBLIC_URL + '/akatsuki1.jpg',
+            imagen: process.env.PUBLIC_URL + '/Suéter de nube Akatsuki.jpg',
             categoria: 'Ropa'
         },
         {
@@ -20,7 +20,7 @@ function ProductList() {
             nombre: 'Akatsuki Robe',
             precio: 89.99,
             descripcion: 'Robe negro con nubes rojas de Akatsuki. Ideal para cosplay o uso casual.',
-            imagen: process.env.PUBLIC_URL + '/naruto2.jpg',
+            imagen: process.env.PUBLIC_URL + '/Túnica Akatsuki.webp',
             categoria: 'Ropa'
         },
         {
@@ -28,7 +28,7 @@ function ProductList() {
             nombre: 'Akatsuki Hat',
             precio: 29.99,
             descripcion: 'Gorro con el símbolo de la nube de Akatsuki. Ajustable y cómodo.',
-            imagen: process.env.PUBLIC_URL + '/nube3.jpg',
+            imagen: process.env.PUBLIC_URL + '/Sombrero Akatsuki.jpg',
             categoria: 'Accesorios'
         },
         {
@@ -36,7 +36,7 @@ function ProductList() {
             nombre: 'Akatsuki T-Shirt',
             precio: 24.99,
             descripcion: 'Camiseta con el diseño clásico de Akatsuki. 100% algodón.',
-            imagen: process.env.PUBLIC_URL + '/paint4.jpg',
+            imagen: process.env.PUBLIC_URL + '/Camiseta de Akatsuki.jpg',
             categoria: 'Ropa'
         },
         {
@@ -44,7 +44,7 @@ function ProductList() {
             nombre: 'Akatsuki Sandals',
             precio: 39.99,
             descripcion: 'Sandalias con el símbolo de Akatsuki. Cómodas y duraderas.',
-            imagen: process.env.PUBLIC_URL + '/uchiha5.jpg',
+            imagen: process.env.PUBLIC_URL + '/Sandalias Akatsuki.jpg',
             categoria: 'Calzado'
         },
         {
@@ -52,7 +52,7 @@ function ProductList() {
             nombre: 'Akatsuki Backpack',
             precio: 59.99,
             descripcion: 'Mochila con el diseño de Akatsuki. Resistente y espaciosa.',
-            imagen: process.env.PUBLIC_URL + '/akatsuki.jpg',
+            imagen: process.env.PUBLIC_URL + '/Mochila Akatsuki.jpg',
             categoria: 'Accesorios'
         }
     ];

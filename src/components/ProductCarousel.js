@@ -1,45 +1,13 @@
 import React, { useState } from 'react';
-import { FaChevronLeft, FaChevronRight, FaShoppingCart } from 'react-icons/fa';
 import { useCurrency } from '../context/CurrencyContext';
+import { useCart } from '../context/CartContext';
+import { toast } from 'react-toastify';
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-const ProductCarousel = ({ products }) => {
-  return (
-    <Carousel className="mb-4" style={{ backgroundColor: '#DC143C' }}>
-      {products.map((product, index) => (
-        <Carousel.Item key={index} style={{ backgroundColor: '#DC143C' }}>
-          <div className="d-flex justify-content-center" style={{ backgroundColor: '#DC143C' }}>
-            <img
-              className="d-block"
-              src={product.image}
-              alt={product.name}
-              style={{
-                maxHeight: '400px',
-                objectFit: 'contain',
-                backgroundColor: '#DC143C'
-              }}
-            />
-          </div>
-          <Carousel.Caption className="bg-dark bg-opacity-75 rounded">
-            <h3>{product.name}</h3>
-            <p>{product.price}</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      ))}
-    </Carousel>
-  );
-};
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 function ProductCarousel({ productos }) {
     const [indiceActual, setIndiceActual] = useState(0);
     const productosPorPagina = 3;
     const { formatearPrecio } = useCurrency();
+    const { addToCart } = useCart();
 
     const siguienteSlide = () => {
         setIndiceActual((prevIndex) => 
@@ -54,6 +22,14 @@ function ProductCarousel({ productos }) {
         );
     };
 
+    const handleAddToCart = (producto) => {
+        addToCart(producto);
+        toast.success(`${producto.nombre} agregado al carrito!`, {
+            position: "bottom-right",
+            autoClose: 2000
+        });
+    };
+
     const productosVisibles = productos.slice(
         indiceActual * productosPorPagina,
         (indiceActual + 1) * productosPorPagina
@@ -64,7 +40,10 @@ function ProductCarousel({ productos }) {
             <div className="row">
                 {productosVisibles.map((producto) => (
                     <div key={producto.id} className="col-md-4 mb-4">
-                        <div className="card h-100">
+                        <div className="card h-100" style={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
+                        }}>
                             <img 
                                 src={producto.imagen} 
                                 className="card-img-top" 
@@ -80,34 +59,37 @@ function ProductCarousel({ productos }) {
                                 <p className="card-text">
                                     <strong>{formatearPrecio(producto.precio)}</strong>
                                 </p>
+                                <button 
+                                    className="btn btn-dark w-100"
+                                    onClick={() => handleAddToCart(producto)}
+                                >
+                                    Agregar al Carrito
+                                </button>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
-            <button 
-                className="btn btn-dark position-absolute top-50 start-0 translate-middle-y"
-                onClick={anteriorSlide}
-                style={{ zIndex: 1 }}
-            >
-                &lt;
-            </button>
-            <button 
-                className="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
-                onClick={siguienteSlide}
-                style={{ zIndex: 1 }}
-            >
-                &gt;
-            </button>
+            {productos.length > productosPorPagina && (
+                <>
+                    <button 
+                        className="btn btn-dark position-absolute top-50 start-0 translate-middle-y"
+                        onClick={anteriorSlide}
+                        style={{ zIndex: 1 }}
+                    >
+                        &lt;
+                    </button>
+                    <button 
+                        className="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
+                        onClick={siguienteSlide}
+                        style={{ zIndex: 1 }}
+                    >
+                        &gt;
+                    </button>
+                </>
+            )}
         </div>
     );
 }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 export default ProductCarousel; 

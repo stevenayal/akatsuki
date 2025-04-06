@@ -66,24 +66,12 @@ function ProductList() {
         : productos;
 
     return (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         <div className="container mt-4" style={{
             backgroundColor: '#DC143C',
             borderRadius: '8px',
             padding: '20px'
         }}>
-            <h2 className="text-center mb-4" style={{ color: 'white' }}>Lista de Productos</h2>
-            <p className="text-center mb-4" style={{ color: 'white' }}>Aquí encontrarás una lista de todos los productos disponibles.</p>
-            <ProductCarousel products={products} />
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-        <div className="container mt-4">
-            <h2 className="text-center mb-4">
+            <h2 className="text-center mb-4" style={{ color: 'white' }}>
                 {terminoBusqueda 
                     ? `Resultados de búsqueda para "${terminoBusqueda}"`
                     : "Nuestros Productos"
@@ -92,18 +80,11 @@ function ProductList() {
             {productosFiltrados.length > 0 ? (
                 <ProductCarousel productos={productosFiltrados} />
             ) : (
-                <div className="text-center">
+                <div className="text-center" style={{ color: 'white' }}>
                     <p>No se encontraron productos que coincidan con tu búsqueda.</p>
                     <p>Intenta con otros términos o navega por nuestras categorías.</p>
                 </div>
             )}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         </div>
     );
 }

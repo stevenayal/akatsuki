@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaHome, FaShoppingBag, FaInfoCircle, FaShoppingCart, FaUser, FaSearch, FaGlobe } from 'react-icons/fa';
 import { useCurrency } from '../context/CurrencyContext';
+import CartIcon from './CartIcon';
 
 function Header() {
     const [busqueda, setBusqueda] = useState('');
@@ -46,7 +47,7 @@ function Header() {
                         <div className="d-inline-flex align-items-center">
                             <FaGlobe className="me-2" />
                             <select 
-                                className="form-select form-select-sm w-auto" 
+                                className="form-select form-select-sm w-auto me-3" 
                                 value={moneda}
                                 onChange={manejarCambioMoneda}
                             >
@@ -54,6 +55,7 @@ function Header() {
                                 <option value="PYG">PYG</option>
                                 <option value="EUR">EUR</option>
                             </select>
+                            <CartIcon />
                         </div>
                     </div>
                 </div>
@@ -110,11 +112,6 @@ function Header() {
                                         <li className="nav-item mx-3">
                                             <Link className="enlace-nav d-flex align-items-center" to="/sobre-nosotros">
                                                 <FaInfoCircle className="me-2" /> Sobre Nosotros
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item mx-3">
-                                            <Link className="enlace-nav d-flex align-items-center" to="/carrito">
-                                                <FaShoppingCart className="me-2" /> Carrito
                                             </Link>
                                         </li>
                                         <li className="nav-item mx-3">

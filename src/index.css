@@ -1,10 +1,9 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
 }
 
 code {
@@ -24,4 +23,153 @@ code {
 
 .product-carousel .carousel-indicators {
     bottom: -10px;
+}
+
+/* Estilos para el carrusel de productos */
+.product-carousel {
+  padding: 2rem 0;
+}
+
+.tarjeta-producto {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta-producto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.imagen-tarjeta {
+  border-radius: 0;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.cuerpo-tarjeta {
+  padding: 1.5rem;
+}
+
+.titulo-tarjeta {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.texto-tarjeta {
+  margin-bottom: 0.5rem;
+}
+
+.texto-gris {
+  color: #6c757d;
+}
+
+.texto-primario {
+  color: #0d6efd;
+}
+
+/* Estilos para la barra de búsqueda */
+.grupo-input {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grupo-input .form-control {
+  border-right: none;
+}
+
+.grupo-input .btn {
+  border-left: none;
+}
+
+/* Estilos para los botones de navegación del carrusel */
+.control-carrusel {
+  transition: background-color 0.3s ease;
+}
+
+.control-carrusel:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Estilos para el encabezado */
+.encabezado {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los enlaces de navegación */
+.enlace-nav {
+  transition: color 0.3s ease;
+}
+
+.enlace-nav:hover {
+  color: #ffc107 !important;
+}
+
+/* Estilos para el botón de carrito */
+.btn-oscuro {
+  transition: all 0.3s ease;
+}
+
+.btn-oscuro:hover {
+  background-color: #343a40;
+  transform: scale(1.05);
+}
+
+/* Estilos para la sección principal */
+.contenedor-principal {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Estilos para las tarjetas de características */
+.tarjeta {
+  transition: transform 0.3s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .product-carousel {
+    padding: 1rem 0;
+  }
+  
+  .product-carousel .btn {
+    display: none;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Clases de utilidad */
+.posicion-relativa {
+  position: relative;
+}
+
+.altura-completa {
+  height: 100%;
+}
+
+.texto-sin-decoracion {
+  text-decoration: none;
+}
+
+.texto-centro {
+  text-align: center;
+}
+
+.texto-md-inicio {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .texto-md-inicio {
+    text-align: left;
+  }
 }

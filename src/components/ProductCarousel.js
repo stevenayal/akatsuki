@@ -1,6 +1,8 @@
-import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { FaChevronLeft, FaChevronRight, FaShoppingCart } from 'react-icons/fa';
+import { useCurrency } from '../context/CurrencyContext';
 
+<<<<<<< Updated upstream
 const ProductCarousel = ({ products }) => {
   return (
     <Carousel className="mb-4" style={{ backgroundColor: '#DC143C' }}>
@@ -27,5 +29,73 @@ const ProductCarousel = ({ products }) => {
     </Carousel>
   );
 };
+=======
+function ProductCarousel({ productos }) {
+    const [indiceActual, setIndiceActual] = useState(0);
+    const productosPorPagina = 3;
+    const { formatearPrecio } = useCurrency();
+
+    const siguienteSlide = () => {
+        setIndiceActual((prevIndex) => 
+            (prevIndex + 1) % Math.ceil(productos.length / productosPorPagina)
+        );
+    };
+
+    const anteriorSlide = () => {
+        setIndiceActual((prevIndex) => 
+            (prevIndex - 1 + Math.ceil(productos.length / productosPorPagina)) % 
+            Math.ceil(productos.length / productosPorPagina)
+        );
+    };
+
+    const productosVisibles = productos.slice(
+        indiceActual * productosPorPagina,
+        (indiceActual + 1) * productosPorPagina
+    );
+
+    return (
+        <div className="product-carousel position-relative">
+            <div className="row">
+                {productosVisibles.map((producto) => (
+                    <div key={producto.id} className="col-md-4 mb-4">
+                        <div className="card h-100">
+                            <img 
+                                src={producto.imagen} 
+                                className="card-img-top" 
+                                alt={producto.nombre}
+                                style={{ 
+                                    height: '200px', 
+                                    objectFit: 'cover' 
+                                }}
+                            />
+                            <div className="card-body">
+                                <h5 className="card-title">{producto.nombre}</h5>
+                                <p className="card-text">{producto.descripcion}</p>
+                                <p className="card-text">
+                                    <strong>{formatearPrecio(producto.precio)}</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <button 
+                className="btn btn-dark position-absolute top-50 start-0 translate-middle-y"
+                onClick={anteriorSlide}
+                style={{ zIndex: 1 }}
+            >
+                &lt;
+            </button>
+            <button 
+                className="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
+                onClick={siguienteSlide}
+                style={{ zIndex: 1 }}
+            >
+                &gt;
+            </button>
+        </div>
+    );
+}
+>>>>>>> Stashed changes
 
 export default ProductCarousel; 

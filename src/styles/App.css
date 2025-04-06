@@ -1,8 +1,9 @@
 body {
-    background-color: #DC143C;
+    background: linear-gradient(to bottom, #DC143C, #000000);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 
 header, footer {
@@ -16,8 +17,8 @@ div {
     padding: 20px;
 }
 
-h1, h2 {
-    color: #444;
+h1, h2, h3, p {
+    color: white !important;
 }
 
 /* Asegúrate de que estos estilos estén en tu archivo App.css */
@@ -46,14 +47,16 @@ h2, p {
 
 /* Para el contenedor principal */
 .container {
-    background-color: #DC143C !important;
-    min-height: 100vh;
+    background: linear-gradient(to bottom, #DC143C, #000000);
+    border-radius: 8px;
+    padding: 20px;
 }
 
 /* Agregar estos estilos para la página Sobre Nosotros */
 .card {
     background: linear-gradient(to bottom, #DC143C, #000000) !important;
     color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .card-title, 

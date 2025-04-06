@@ -4,57 +4,77 @@ import { FaShippingFast, FaCreditCard, FaHeadset } from 'react-icons/fa';
 
 function Home() {
     return (
-        <div className="contenedor-principal">
-            <div className="container">
-                <div className="row align-items-center">
-                    <div className="col-md-6 text-center">
-                        <h1 className="display-4 mb-4">Bienvenido a Akatsuki</h1>
-                        <p className="lead mb-4">
-                            Descubre nuestra colección exclusiva de productos. Calidad y estilo en cada artículo que ofrecemos.
-                        </p>
-                        <Link to="/productos" className="btn btn-dark btn-lg">
-                            Ver Productos
-                        </Link>
-                    </div>
-                    <div className="col-md-6 text-center">
-                        <img 
-                            src={process.env.PUBLIC_URL + '/akatsuki.jpg'} 
-                            alt="Akatsuki Collection" 
-                            className="img-fluid rounded shadow"
-                            style={{
-                                maxWidth: '100%',
-                                height: 'auto'
-                            }}
-                        />
-                    </div>
+        <div className="home-container" style={{
+            background: 'linear-gradient(to bottom, #DC143C, #000000)',
+            minHeight: '100vh',
+            color: 'white',
+            padding: '20px'
+        }}>
+            <div className="row align-items-center min-vh-75">
+                <div className="col-md-6 text-center text-md-start">
+                    <h1 className="display-4 fw-bold mb-4" style={{ color: 'white' }}>
+                        Bienvenido a Akatsuki
+                    </h1>
+                    <p className="lead mb-4" style={{ color: 'white' }}>
+                        Descubre nuestra colección exclusiva de productos. 
+                        Calidad y estilo en cada artículo que ofrecemos.
+                    </p>
+                    <Link to="/productos" className="btn btn-light btn-lg">
+                        Ver Productos
+                    </Link>
                 </div>
-
-                <div className="row mt-5">
-                    <h2 className="text-center mb-4">¿Por qué elegirnos?</h2>
-                    <div className="col-md-4 text-center mb-4">
-                        <div className="card h-100 shadow">
-                            <div className="card-body">
-                                <FaShippingFast className="display-4 mb-3 text-primary" />
-                                <h3>Envío Rápido</h3>
-                                <p>Entrega rápida y segura a cualquier parte del país.</p>
+                <div className="col-md-6 text-center">
+                    <img 
+                        src={process.env.PUBLIC_URL + '/akatsuki.jpg'} 
+                        alt="Akatsuki Collection" 
+                        className="img-fluid rounded shadow"
+                        style={{
+                            maxWidth: '100%',
+                            height: 'auto',
+                            border: '4px solid white'
+                        }}
+                    />
+                </div>
+            </div>
+            
+            <div className="row mt-5">
+                <div className="col-12">
+                    <h2 className="text-center mb-4" style={{ color: 'white' }}>¿Por qué elegirnos?</h2>
+                    <div className="row g-4">
+                        <div className="col-md-4">
+                            <div className="card h-100" style={{
+                                background: 'linear-gradient(to bottom, #DC143C, #000000)',
+                                border: '1px solid rgba(255, 255, 255, 0.2)',
+                                color: 'white'
+                            }}>
+                                <div className="card-body text-center">
+                                    <h3 className="h5">Calidad Premium</h3>
+                                    <p>Productos seleccionados con los más altos estándares de calidad.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-md-4 text-center mb-4">
-                        <div className="card h-100 shadow">
-                            <div className="card-body">
-                                <FaCreditCard className="display-4 mb-3 text-primary" />
-                                <h3>Pago Seguro</h3>
-                                <p>Múltiples métodos de pago seguros y confiables.</p>
+                        <div className="col-md-4">
+                            <div className="card h-100" style={{
+                                background: 'linear-gradient(to bottom, #DC143C, #000000)',
+                                border: '1px solid rgba(255, 255, 255, 0.2)',
+                                color: 'white'
+                            }}>
+                                <div className="card-body text-center">
+                                    <h3 className="h5">Calidad Premium</h3>
+                                    <p>Productos seleccionados con los más altos estándares de calidad.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-md-4 text-center mb-4">
-                        <div className="card h-100 shadow">
-                            <div className="card-body">
-                                <FaHeadset className="display-4 mb-3 text-primary" />
-                                <h3>Atención 24/7</h3>
-                                <p>Soporte al cliente disponible en todo momento.</p>
+                        <div className="col-md-4">
+                            <div className="card h-100" style={{
+                                background: 'linear-gradient(to bottom, #DC143C, #000000)',
+                                border: '1px solid rgba(255, 255, 255, 0.2)',
+                                color: 'white'
+                            }}>
+                                <div className="card-body text-center">
+                                    <h3 className="h5">Calidad Premium</h3>
+                                    <p>Productos seleccionados con los más altos estándares de calidad.</p>
+                                </div>
                             </div>
                         </div>
                     </div>

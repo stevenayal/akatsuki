@@ -1,94 +1,63 @@
 import React, { useState } from 'react';
-import { useCurrency } from '../context/CurrencyContext';
-import { useCart } from '../context/CartContext';
+import { Carousel, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import { useCart } from '../context/CartContext';
 
 function ProductCarousel({ productos }) {
-    const [indiceActual, setIndiceActual] = useState(0);
-    const productosPorPagina = 3;
-    const { formatearPrecio } = useCurrency();
+    const [index, setIndex] = useState(0);
     const { addToCart } = useCart();
 
-    const siguienteSlide = () => {
-        setIndiceActual((prevIndex) => 
-            (prevIndex + 1) % Math.ceil(productos.length / productosPorPagina)
-        );
-    };
-
-    const anteriorSlide = () => {
-        setIndiceActual((prevIndex) => 
-            (prevIndex - 1 + Math.ceil(productos.length / productosPorPagina)) % 
-            Math.ceil(productos.length / productosPorPagina)
-        );
+    const handleSelect = (selectedIndex) => {
+        setIndex(selectedIndex);
     };
 
     const handleAddToCart = (producto) => {
         addToCart(producto);
-        toast.success(`${producto.nombre} agregado al carrito!`, {
-            position: "bottom-right",
-            autoClose: 2000
-        });
+        toast.success(`${producto.nombre} agregado al carrito!`);
     };
 
-    const productosVisibles = productos.slice(
-        indiceActual * productosPorPagina,
-        (indiceActual + 1) * productosPorPagina
+    const productosPorPagina = 3;
+    const totalPaginas = Math.ceil(productos.length / productosPorPagina);
+    const productosActuales = productos.slice(
+        index * productosPorPagina,
+        (index + 1) * productosPorPagina
     );
 
     return (
-        <div className="product-carousel position-relative">
-            <div className="row">
-                {productosVisibles.map((producto) => (
-                    <div key={producto.id} className="col-md-4 mb-4">
-                        <div className="card h-100" style={{
-                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
-                        }}>
-                            <img 
-                                src={producto.imagen} 
-                                className="card-img-top" 
-                                alt={producto.nombre}
-                                style={{ 
-                                    height: '200px', 
-                                    objectFit: 'cover' 
-                                }}
-                            />
-                            <div className="card-body">
-                                <h5 className="card-title">{producto.nombre}</h5>
-                                <p className="card-text">{producto.descripcion}</p>
-                                <p className="card-text">
-                                    <strong>{formatearPrecio(producto.precio)}</strong>
-                                </p>
-                                <button 
-                                    className="btn btn-dark w-100"
-                                    onClick={() => handleAddToCart(producto)}
-                                >
-                                    Agregar al Carrito
-                                </button>
+        <Carousel activeIndex={index} onSelect={handleSelect} className="mb-4">
+            {Array.from({ length: totalPaginas }).map((_, pageIndex) => (
+                <Carousel.Item key={pageIndex}>
+                    <div className="d-flex justify-content-around">
+                        {productosActuales.map((producto) => (
+                            <div key={producto.id} className="text-center" style={{ width: '30%' }}>
+                                <div className="d-flex justify-content-center">
+                                    <img
+                                        src={producto.imagen}
+                                        alt={producto.nombre}
+                                        style={{
+                                            maxHeight: '400px',
+                                            objectFit: 'contain',
+                                            width: '100%'
+                                        }}
+                                    />
+                                </div>
+                                <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
+                                    <h5>{producto.nombre}</h5>
+                                    <p className="mb-2">${producto.precio.toFixed(2)}</p>
+                                    <Button
+                                        variant="outline-light"
+                                        size="sm"
+                                        onClick={() => handleAddToCart(producto)}
+                                    >
+                                        Agregar al carrito
+                                    </Button>
+                                </Carousel.Caption>
                             </div>
-                        </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-            {productos.length > productosPorPagina && (
-                <>
-                    <button 
-                        className="btn btn-dark position-absolute top-50 start-0 translate-middle-y"
-                        onClick={anteriorSlide}
-                        style={{ zIndex: 1 }}
-                    >
-                        &lt;
-                    </button>
-                    <button 
-                        className="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
-                        onClick={siguienteSlide}
-                        style={{ zIndex: 1 }}
-                    >
-                        &gt;
-                    </button>
-                </>
-            )}
-        </div>
+                </Carousel.Item>
+            ))}
+        </Carousel>
     );
 }
 

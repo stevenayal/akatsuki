@@ -32,9 +32,13 @@ function ProductList() {
     ];
 
     return (
-        <div className="container mt-4">
-            <h2 className="text-center mb-4">Lista de Productos</h2>
-            <p className="text-center mb-4">Aquí encontrarás una lista de todos los productos disponibles.</p>
+        <div className="container mt-4" style={{
+            backgroundColor: '#DC143C',
+            borderRadius: '8px',
+            padding: '20px'
+        }}>
+            <h2 className="text-center mb-4" style={{ color: 'white' }}>Lista de Productos</h2>
+            <p className="text-center mb-4" style={{ color: 'white' }}>Aquí encontrarás una lista de todos los productos disponibles.</p>
             <ProductCarousel products={products} />
         </div>
     );

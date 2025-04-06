@@ -4,6 +4,7 @@ import { useCurrency } from '../context/CurrencyContext';
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 const ProductCarousel = ({ products }) => {
   return (
     <Carousel className="mb-4" style={{ backgroundColor: '#DC143C' }}>
@@ -31,6 +32,8 @@ const ProductCarousel = ({ products }) => {
   );
 };
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 function ProductCarousel({ productos }) {
@@ -100,6 +103,9 @@ function ProductCarousel({ productos }) {
     );
 }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

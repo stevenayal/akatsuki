@@ -6,6 +6,7 @@ function Home() {
     return (
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <div className="home-container" style={{
             background: 'linear-gradient(to bottom, #DC143C, #000000)',
             minHeight: '100vh',
@@ -25,6 +26,8 @@ function Home() {
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         <div className="contenedor-principal">
             <div className="fila alinear-centro min-vh-75">
                 <div className="columna-md-6 texto-centro texto-md-inicio">
@@ -35,6 +38,9 @@ function Home() {
                     </p>
                     <Link to="/productos" className="btn btn-oscuro btn-lg">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -51,6 +57,7 @@ function Home() {
                             style={{
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                 width: '500px',
                                 height: '250px',
                                 objectFit: 'cover',
@@ -60,6 +67,8 @@ function Home() {
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
                                 ancho: '500px',
                                 altura: '250px',
                                 ajusteObjeto: 'cubrir',
@@ -67,6 +76,9 @@ function Home() {
                                 sombra: '0 0 20px rgba(0,0,0,0.3)',
                                 radioBorde: '250px 250px 250px 250px / 125px 125px 125px 125px'
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -76,6 +88,7 @@ function Home() {
                 </div>
             </div>
             
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
             <div className="row mt-5">
@@ -116,6 +129,8 @@ function Home() {
                                     <h3 className="h5" style={{ color: 'white' }}>Atención Personalizada</h3>
                                     <p style={{ color: 'white' }}>Servicio al cliente de primera calidad para ayudarte en todo momento.</p>
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             <div className="fila mt-5">

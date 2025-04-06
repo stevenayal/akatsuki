@@ -3,6 +3,7 @@ import { FaChevronLeft, FaChevronRight, FaShoppingCart } from 'react-icons/fa';
 import { useCurrency } from '../context/CurrencyContext';
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 const ProductCarousel = ({ products }) => {
   return (
     <Carousel className="mb-4" style={{ backgroundColor: '#DC143C' }}>
@@ -30,6 +31,8 @@ const ProductCarousel = ({ products }) => {
   );
 };
 =======
+=======
+>>>>>>> Stashed changes
 function ProductCarousel({ productos }) {
     const [indiceActual, setIndiceActual] = useState(0);
     const productosPorPagina = 3;
@@ -96,6 +99,9 @@ function ProductCarousel({ productos }) {
         </div>
     );
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 export default ProductCarousel; 

@@ -5,6 +5,7 @@ import { FaShoppingBag } from 'react-icons/fa';
 function Home() {
     return (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <div className="home-container" style={{
             background: 'linear-gradient(to bottom, #DC143C, #000000)',
             minHeight: '100vh',
@@ -22,6 +23,8 @@ function Home() {
                     </p>
                     <Link to="/productos" className="btn btn-light btn-lg">
 =======
+=======
+>>>>>>> Stashed changes
         <div className="contenedor-principal">
             <div className="fila alinear-centro min-vh-75">
                 <div className="columna-md-6 texto-centro texto-md-inicio">
@@ -31,6 +34,9 @@ function Home() {
                         Calidad y estilo en cada artículo que ofrecemos.
                     </p>
                     <Link to="/productos" className="btn btn-oscuro btn-lg">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                         <FaShoppingBag className="me-2" />
                         Ver Productos
@@ -44,6 +50,7 @@ function Home() {
                             className="img-fluid"
                             style={{
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                 width: '500px',
                                 height: '250px',
                                 objectFit: 'cover',
@@ -51,12 +58,17 @@ function Home() {
                                 boxShadow: '0 0 20px rgba(255,255,255,0.3)',
                                 borderRadius: '250px 250px 250px 250px / 125px 125px 125px 125px'
 =======
+=======
+>>>>>>> Stashed changes
                                 ancho: '500px',
                                 altura: '250px',
                                 ajusteObjeto: 'cubrir',
                                 borde: '4px solid #343a40',
                                 sombra: '0 0 20px rgba(0,0,0,0.3)',
                                 radioBorde: '250px 250px 250px 250px / 125px 125px 125px 125px'
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                             }}
                         />
@@ -64,6 +76,7 @@ function Home() {
                 </div>
             </div>
             
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             <div className="row mt-5">
                 <div className="col-12">
@@ -103,6 +116,8 @@ function Home() {
                                     <h3 className="h5" style={{ color: 'white' }}>Atención Personalizada</h3>
                                     <p style={{ color: 'white' }}>Servicio al cliente de primera calidad para ayudarte en todo momento.</p>
 =======
+=======
+>>>>>>> Stashed changes
             <div className="fila mt-5">
                 <div className="columna-12">
                     <h2 className="texto-centro mb-4">¿Por qué elegirnos?</h2>

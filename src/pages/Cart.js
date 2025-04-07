@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
-import { FaTrash, FaMinus, FaPlus } from 'react-icons/fa';
+import { FaTrash, FaMinus, FaPlus, FaMoneyBill, FaCreditCard, FaUniversity } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Cart() {
     const { cartItems, removeFromCart, updateQuantity, getCartTotal } = useCart();
     const { formatearPrecio } = useCurrency();
+    const [metodoPago, setMetodoPago] = useState('');
+
+    const handleProcederPago = () => {
+        if (!metodoPago) {
+            toast.error('Por favor selecciona un método de pago');
+            return;
+        }
+        // Aquí iría la lógica para proceder con el pago
+        toast.success('Procesando pago...');
+    };
 
     if (cartItems.length === 0) {
         return (
@@ -30,10 +41,13 @@ function Cart() {
                             <div className="row g-0">
                                 <div className="col-md-4">
                                     <img
-                                        src={item.imagen}
+                                        src={process.env.PUBLIC_URL + '/productos/' + item.imagen}
                                         alt={item.nombre}
                                         className="img-fluid rounded-start"
                                         style={{ height: '200px', objectFit: 'cover' }}
+                                        onError={(e) => {
+                                            e.target.src = process.env.PUBLIC_URL + '/akatsuki.jpg';
+                                        }}
                                     />
                                 </div>
                                 <div className="col-md-8">
@@ -92,9 +106,38 @@ function Cart() {
                                 <strong>Total:</strong>
                                 <strong>{formatearPrecio(getCartTotal())}</strong>
                             </div>
-                            <Link to="/checkout" className="btn btn-dark w-100">
+
+                            <div className="mb-4">
+                                <h6 className="mb-3">Método de Pago</h6>
+                                <div className="d-grid gap-2">
+                                    <button 
+                                        className={`btn btn-outline-dark d-flex align-items-center justify-content-center gap-2 ${metodoPago === 'efectivo' ? 'active' : ''}`}
+                                        onClick={() => setMetodoPago('efectivo')}
+                                    >
+                                        <FaMoneyBill /> Efectivo
+                                    </button>
+                                    <button 
+                                        className={`btn btn-outline-dark d-flex align-items-center justify-content-center gap-2 ${metodoPago === 'transferencia' ? 'active' : ''}`}
+                                        onClick={() => setMetodoPago('transferencia')}
+                                    >
+                                        <FaUniversity /> Transferencia Bancaria
+                                    </button>
+                                    <button 
+                                        className={`btn btn-outline-dark d-flex align-items-center justify-content-center gap-2 ${metodoPago === 'tarjeta' ? 'active' : ''}`}
+                                        onClick={() => setMetodoPago('tarjeta')}
+                                    >
+                                        <FaCreditCard /> Tarjeta de Crédito
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button 
+                                onClick={handleProcederPago}
+                                className="btn btn-dark w-100"
+                                disabled={!metodoPago}
+                            >
                                 Proceder al Pago
-                            </Link>
+                            </button>
                         </div>
                     </div>
                 </div>

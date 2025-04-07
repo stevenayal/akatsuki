@@ -12,14 +12,14 @@ export function CurrencyProvider({ children }) {
         EUR: 0.85   // 1 USD = 0.85 EUR (aproximado)
     };
 
-    const formatearPrecio = (cantidad, moneda) => {
+    const formatearPrecio = (cantidad) => {
         const opciones = {
             USD: { style: 'currency', currency: 'USD' },
             PYG: { style: 'currency', currency: 'PYG', maximumFractionDigits: 0 },
             EUR: { style: 'currency', currency: 'EUR' }
         };
 
-        return new Intl.NumberFormat('es-PY', opciones[moneda]).format(cantidad);
+        return new Intl.NumberFormat('es-PY', opciones[moneda]).format(cantidad * tasasDeCambio[moneda]);
     };
 
     const convertirPrecio = (precioUSD, monedaDestino) => {
@@ -30,7 +30,8 @@ export function CurrencyProvider({ children }) {
     const value = {
         moneda,
         setMoneda,
-        convertirPrecio
+        convertirPrecio,
+        formatearPrecio
     };
 
     return (

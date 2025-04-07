@@ -1,70 +1,132 @@
-# Comenzando con Create React App
+# Akatsuki Shop - Tienda de Ropa y Accesorios
 
-Este proyecto fue iniciado con [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Descripción
+Akatsuki Shop es una tienda en línea especializada en productos de Akatsuki, ofreciendo una amplia gama de ropa y accesorios para los fans de Naruto. La aplicación incluye funcionalidades de carrito de compras, conversión de moneda, y una interfaz de usuario moderna y responsiva.
 
-## Scripts Disponibles
+## 📚 Tecnologías Utilizadas
 
-En el directorio del proyecto, puedes ejecutar:
+### Frontend
+| Tecnología | Versión | Uso |
+|------------|---------|-----|
+| React | 18.2.0 | Framework principal |
+| React Router | 6.22.0 | Navegación |
+| Bootstrap | 5.3.2 | Estilos y componentes |
+| Framer Motion | 11.0.3 | Animaciones |
+| React Toastify | 10.0.4 | Notificaciones |
+| Font Awesome | 6.5.1 | Iconos |
 
-### `npm start`
+### Bootstrap Components Utilizados
+| Componente | Uso |
+|------------|-----|
+| Navbar | Barra de navegación principal |
+| Container | Contenedor principal de la aplicación |
+| Row/Col | Sistema de grid para layouts |
+| Card | Tarjetas de productos y características |
+| Button | Botones de acción |
+| Modal | Ventanas modales |
+| Form | Formularios de búsqueda |
+| Badge | Indicadores de cantidad |
+| Toast | Notificaciones |
+| Carousel | Carrusel de productos |
+| List Group | Listas de elementos |
+| Table | Tablas de información |
+| Alert | Mensajes de alerta |
+| Spinner | Indicadores de carga |
 
-Ejecuta la aplicación en modo de desarrollo.\
-Abre [http://localhost:3000](http://localhost:3000) para verlo en tu navegador.
+## 🛠️ Componentes Principales
 
-La página se recargará cuando hagas cambios.\
-También puedes ver cualquier error de lint en la consola.
+### Páginas
+| Componente | Descripción |
+|------------|-------------|
+| Home | Página principal con productos destacados |
+| ProductList | Lista de productos con búsqueda |
+| Cart | Carrito de compras |
+| About | Información sobre la tienda |
+| Contact | Formulario de contacto |
 
-### `npm test`
+### Componentes Reutilizables
+| Componente | Descripción |
+|------------|-------------|
+| Header | Barra de navegación con logo y menú |
+| Footer | Pie de página con información de contacto |
+| ProductCarousel | Carrusel de productos |
+| CartIcon | Icono del carrito con contador |
+| CurrencySelector | Selector de moneda |
+| ProductCard | Tarjeta de producto individual |
 
-Lanza el corredor de pruebas en modo interactivo de observación.\
-Consulta la sección sobre [ejecución de pruebas](https://facebook.github.io/create-react-app/docs/running-tests) para más información.
+## 🔄 Funciones Principales
 
-### `npm run build`
+### Contextos
+| Función | Descripción |
+|---------|-------------|
+| useCurrency | Manejo de conversión de moneda |
+| useCart | Gestión del carrito de compras |
 
-Construye la aplicación para producción en la carpeta `build`.\
-Agrupa correctamente React en modo de producción y optimiza la construcción para el mejor rendimiento.
+### Utilidades
+| Función | Descripción |
+|---------|-------------|
+| convertirPrecio | Conversión de precios entre monedas |
+| formatearPrecio | Formateo de precios según moneda |
+| handleImageError | Manejo de errores en carga de imágenes |
 
-La construcción está minificada y los nombres de archivo incluyen los hashes.\
-¡Tu aplicación está lista para ser desplegada!
+## 👥 Equipo de Desarrollo
 
-Consulta la sección sobre [despliegue](https://facebook.github.io/create-react-app/docs/deployment) para más información.
+### Líderes de la Organización
+| Nombre | Rol | GitHub |
+|--------|-----|--------|
+| Steven Ayala | Líder de Proyecto | [@stevenayal](https://github.com/stevenayal) |
+| Gustavo Acosta | Líder Técnico | [@Gustavo-cpu142](https://github.com/Gustavo-cpu142) |
+| Saulo Caceres | Líder de Diseño | [@R0BE3RT](https://github.com/R0BE3RT) |
 
-### `npm run eject`
+### Equipo de Desarrollo
+| Nombre | Rol | GitHub |
+|--------|-----|--------|
+| Jerri Tointon | Desarrollador Frontend | [@jerritointon](https://github.com/jerritointon) |
+| Pain | Diseñador UI/UX | [@pain](https://github.com/pain) |
+| Konan | Desarrollador Backend | [@konan](https://github.com/konan) |
+| Itachi | Desarrollador Full Stack | [@itachi](https://github.com/itachi) |
+| Kisame | Desarrollador Frontend | [@kisame](https://github.com/kisame) |
+| Deidara | Diseñador Gráfico | [@deidara](https://github.com/deidara) |
+| Sasori | Desarrollador Backend | [@sasori](https://github.com/sasori) |
+| Hidan | Desarrollador Frontend | [@hidan](https://github.com/hidan) |
+| Kakuzu | Desarrollador Backend | [@kakuzu](https://github.com/kakuzu) |
+| Zetsu | Desarrollador Full Stack | [@zetsu](https://github.com/zetsu) |
 
-**Nota: esta es una operación de un solo sentido. Una vez que `eject`, ¡no puedes volver atrás!**
+## 📦 Instalación
 
-Si no estás satisfecho con la herramienta de construcción y las opciones de configuración, puedes `eject` en cualquier momento. Este comando eliminará la dependencia de construcción única de tu proyecto.
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/tu-usuario/akatsuki-shop.git
+```
 
-En su lugar, copiará todos los archivos de configuración y las dependencias transitivas (webpack, Babel, ESLint, etc.) directamente en tu proyecto para que tengas control total sobre ellos. Todos los comandos excepto `eject` seguirán funcionando, pero apuntarán a los scripts copiados para que puedas ajustarlos. En este punto, estás por tu cuenta.
+2. Instalar dependencias:
+```bash
+cd akatsuki-shop
+npm install
+```
 
-No tienes que usar `eject` nunca. El conjunto de características curadas es adecuado para despliegues pequeños y medianos, y no deberías sentirte obligado a usar esta característica. Sin embargo, entendemos que esta herramienta no sería útil si no pudieras personalizarla cuando estés listo para hacerlo.
+3. Iniciar la aplicación:
+```bash
+npm start
+```
 
-## Aprende Más
+## 🌐 Características
 
-Puedes aprender más en la [documentación de Create React App](https://facebook.github.io/create-react-app/docs/getting-started).
+- 🛒 Carrito de compras funcional
+- 💱 Conversión de moneda en tiempo real
+- 🔍 Búsqueda de productos
+- 📱 Diseño responsivo
+- 🎨 Animaciones suaves
+- 🌍 Soporte multilingüe
+- 🔒 Autenticación de usuarios
+- 📦 Gestión de inventario
+- 📊 Panel de administración
 
-Para aprender React, consulta la [documentación de React](https://reactjs.org/).
+## 📝 Licencia
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-### División de Código
+## 🤝 Contribuciones
+Las contribuciones son bienvenidas. Por favor, lee las guías de contribución antes de enviar un pull request.
 
-Esta sección se ha movido aquí: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analizando el Tamaño del Paquete
-
-Esta sección se ha movido aquí: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Creando una Aplicación Web Progresiva
-
-Esta sección se ha movido aquí: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Configuración Avanzada
-
-Esta sección se ha movido aquí: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Despliegue
-
-Esta sección se ha movido aquí: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` falla al minificar
-
-Esta sección se ha movido aquí: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📞 Contacto
+Para cualquier consulta, por favor contacta a nuestro equipo de soporte en support@akatsukishop.com

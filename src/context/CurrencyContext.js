@@ -1,31 +1,40 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const CurrencyContext = createContext();
 
 export function CurrencyProvider({ children }) {
     const [moneda, setMoneda] = useState('USD');
 
-    const formatearPrecio = (precio) => {
-        // Asegurarse de que el precio sea un número
-        const precioNumerico = typeof precio === 'string' ? parseFloat(precio) : precio;
-        
-        const precios = {
-            USD: precioNumerico,
-            PYG: precioNumerico * 7500,
-            EUR: precioNumerico * 0.92
+    // Tasas de cambio (ejemplo)
+    const tasasDeCambio = {
+        USD: 1,
+        PYG: 7300,  // 1 USD = 7300 PYG (aproximado)
+        EUR: 0.85   // 1 USD = 0.85 EUR (aproximado)
+    };
+
+    const formatearPrecio = (cantidad, moneda) => {
+        const opciones = {
+            USD: { style: 'currency', currency: 'USD' },
+            PYG: { style: 'currency', currency: 'PYG', maximumFractionDigits: 0 },
+            EUR: { style: 'currency', currency: 'EUR' }
         };
 
-        const formato = {
-            USD: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }),
-            PYG: new Intl.NumberFormat('es-PY', { style: 'currency', currency: 'PYG' }),
-            EUR: new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' })
-        };
+        return new Intl.NumberFormat('es-PY', opciones[moneda]).format(cantidad);
+    };
 
-        return formato[moneda].format(precios[moneda]);
+    const convertirPrecio = (precioUSD, monedaDestino) => {
+        const precioConvertido = precioUSD * tasasDeCambio[monedaDestino];
+        return formatearPrecio(precioConvertido, monedaDestino);
+    };
+
+    const value = {
+        moneda,
+        setMoneda,
+        convertirPrecio
     };
 
     return (
-        <CurrencyContext.Provider value={{ moneda, setMoneda, formatearPrecio }}>
+        <CurrencyContext.Provider value={value}>
             {children}
         </CurrencyContext.Provider>
     );

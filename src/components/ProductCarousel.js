@@ -1,63 +1,115 @@
 import React, { useState } from 'react';
-import { Carousel, Button } from 'react-bootstrap';
-import { toast } from 'react-toastify';
+import { FaChevronLeft, FaChevronRight, FaShoppingCart } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
+import { toast } from 'react-toastify';
 
 function ProductCarousel({ productos }) {
-    const [index, setIndex] = useState(0);
+    const [indiceActual, setIndiceActual] = useState(0);
+    const productosPorPagina = 4;
     const { addToCart } = useCart();
+    const { moneda, convertirPrecio } = useCurrency();
 
-    const handleSelect = (selectedIndex) => {
-        setIndex(selectedIndex);
+    // Función para manejar errores de carga de imagen
+    const handleImageError = (e) => {
+        e.target.src = process.env.PUBLIC_URL + '/akatsuki.jpg'; // Imagen de respaldo si falla la carga
+    };
+
+    const siguienteSlide = () => {
+        setIndiceActual((prevIndice) => 
+            prevIndice + productosPorPagina >= productos.length ? 0 : prevIndice + productosPorPagina
+        );
+    };
+
+    const anteriorSlide = () => {
+        setIndiceActual((prevIndice) => 
+            prevIndice - productosPorPagina < 0 ? 
+            Math.floor((productos.length - 1) / productosPorPagina) * productosPorPagina : 
+            prevIndice - productosPorPagina
+        );
     };
 
     const handleAddToCart = (producto) => {
         addToCart(producto);
-        toast.success(`${producto.nombre} agregado al carrito!`);
+        toast.success('¡Producto agregado al carrito!');
     };
 
-    const productosPorPagina = 3;
-    const totalPaginas = Math.ceil(productos.length / productosPorPagina);
-    const productosActuales = productos.slice(
-        index * productosPorPagina,
-        (index + 1) * productosPorPagina
-    );
+    if (!productos || productos.length === 0) {
+        return <div className="text-center py-5">No hay productos disponibles</div>;
+    }
+
+    const productosActuales = productos.slice(indiceActual, indiceActual + productosPorPagina);
 
     return (
-        <Carousel activeIndex={index} onSelect={handleSelect} className="mb-4">
-            {Array.from({ length: totalPaginas }).map((_, pageIndex) => (
-                <Carousel.Item key={pageIndex}>
-                    <div className="d-flex justify-content-around">
-                        {productosActuales.map((producto) => (
-                            <div key={producto.id} className="text-center" style={{ width: '30%' }}>
-                                <div className="d-flex justify-content-center">
+        <div className="product-carousel position-relative py-4">
+            <div className="container">
+                <div className="row">
+                    {productosActuales.map((producto, index) => (
+                        <div key={producto.id || index} className="col-12 col-sm-6 col-lg-3 mb-4">
+                            <div className="tarjeta-producto bg-white rounded h-100">
+                                <div className="position-relative">
                                     <img
-                                        src={producto.imagen}
+                                        src={process.env.PUBLIC_URL + '/productos/' + producto.imagen}
                                         alt={producto.nombre}
-                                        style={{
-                                            maxHeight: '400px',
-                                            objectFit: 'contain',
-                                            width: '100%'
-                                        }}
+                                        className="imagen-tarjeta"
+                                        onError={handleImageError}
                                     />
                                 </div>
-                                <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
-                                    <h5>{producto.nombre}</h5>
-                                    <p className="mb-2">${producto.precio.toFixed(2)}</p>
-                                    <Button
-                                        variant="outline-light"
-                                        size="sm"
-                                        onClick={() => handleAddToCart(producto)}
-                                    >
-                                        Agregar al carrito
-                                    </Button>
-                                </Carousel.Caption>
+                                <div className="cuerpo-tarjeta">
+                                    <h5 className="titulo-tarjeta">{producto.nombre}</h5>
+                                    <p className="texto-tarjeta texto-gris mb-2">
+                                        {producto.descripcion}
+                                    </p>
+                                    <div className="mt-auto">
+                                        <p className="texto-tarjeta texto-primario fw-bold mb-2">
+                                            {convertirPrecio(producto.precio, moneda)}
+                                        </p>
+                                        <button
+                                            className="btn btn-dark w-100"
+                                            onClick={() => handleAddToCart(producto)}
+                                        >
+                                            <FaShoppingCart className="me-2" />
+                                            Agregar al carrito
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        ))}
-                    </div>
-                </Carousel.Item>
-            ))}
-        </Carousel>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {productos.length > productosPorPagina && (
+                <>
+                    <button
+                        className="carousel-control-prev"
+                        type="button"
+                        onClick={anteriorSlide}
+                        style={{
+                            width: '40px',
+                            background: 'rgba(0,0,0,0.5)',
+                            border: 'none',
+                            borderRadius: '0 4px 4px 0'
+                        }}
+                    >
+                        <FaChevronLeft className="text-white" />
+                    </button>
+                    <button
+                        className="carousel-control-next"
+                        type="button"
+                        onClick={siguienteSlide}
+                        style={{
+                            width: '40px',
+                            background: 'rgba(0,0,0,0.5)',
+                            border: 'none',
+                            borderRadius: '4px 0 0 4px'
+                        }}
+                    >
+                        <FaChevronRight className="text-white" />
+                    </button>
+                </>
+            )}
+        </div>
     );
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductCarousel from '../components/ProductCarousel';
 import { motion } from 'framer-motion';
+import { FaStar, FaCreditCard, FaHeadset } from 'react-icons/fa';
 
 function Home() {
     // Datos de ejemplo para el carrusel
@@ -74,7 +75,7 @@ function Home() {
                     transition={{ duration: 0.8 }}
                 >
                     <img
-                        src={process.env.PUBLIC_URL + '/logo/logo_pain.jpg'}
+                        src={process.env.PUBLIC_URL + '/akatsuki.jpg'}
                         alt="Logo Pain"
                         className="img-fluid rounded shadow"
                         style={{ 
@@ -93,48 +94,58 @@ function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
             >
-                <h2 className="text-center mb-4">Productos Destacados</h2>
-                <ProductCarousel productos={productosDestacados} />
-            </motion.section>
-
-            <motion.section 
-                className="py-5 bg-light rounded-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-            >
-                <div className="container">
-                    <h2 className="text-center mb-5">¿Por qué elegirnos?</h2>
-                    <div className="row g-4">
-                        <div className="col-md-4">
-                            <div className="card h-100 border-0 shadow-sm">
-                                <div className="card-body text-center">
-                                    <i className="fas fa-shipping-fast fa-3x mb-3 text-danger"></i>
-                                    <h3 className="h5">Envío Rápido</h3>
-                                    <p className="text-muted">Entrega en todo el país en 24-48 horas</p>
+                <h2 className="text-center mb-5">¿Por qué elegirnos?</h2>
+                <div className="row g-4">
+                    <div className="col-md-4">
+                        <div className="card h-100 text-center p-4">
+                            <div className="card-body">
+                                <div className="display-4 mb-3">
+                                    <FaStar className="text-white" size={50} />
                                 </div>
+                                <h3 className="h4 mb-3">Calidad Premium</h3>
+                                <p className="card-text">
+                                    Productos seleccionados con los más altos estándares de calidad.
+                                </p>
                             </div>
                         </div>
-                        <div className="col-md-4">
-                            <div className="card h-100 border-0 shadow-sm">
-                                <div className="card-body text-center">
-                                    <i className="fas fa-shield-alt fa-3x mb-3 text-danger"></i>
-                                    <h3 className="h5">Calidad Garantizada</h3>
-                                    <p className="text-muted">Productos oficiales de la más alta calidad</p>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="card h-100 text-center p-4">
+                            <div className="card-body">
+                                <div className="display-4 mb-3">
+                                    <FaCreditCard className="text-white" size={50} />
                                 </div>
+                                <h3 className="h4 mb-3">Pago Seguro</h3>
+                                <p className="card-text">
+                                    Múltiples métodos de pago seguros y confiables.
+                                </p>
                             </div>
                         </div>
-                        <div className="col-md-4">
-                            <div className="card h-100 border-0 shadow-sm">
-                                <div className="card-body text-center">
-                                    <i className="fas fa-headset fa-3x mb-3 text-danger"></i>
-                                    <h3 className="h5">Soporte 24/7</h3>
-                                    <p className="text-muted">Atención al cliente disponible todo el día</p>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="card h-100 text-center p-4">
+                            <div className="card-body">
+                                <div className="display-4 mb-3">
+                                    <FaHeadset className="text-white" size={50} />
                                 </div>
+                                <h3 className="h4 mb-3">Atención 24/7</h3>
+                                <p className="card-text">
+                                    Soporte al cliente disponible en todo momento.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
+            </motion.section>
+
+            <motion.section 
+                className="py-5"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+            >
+                <h2 className="text-center mb-4">Productos Destacados</h2>
+                <ProductCarousel productos={productosDestacados} />
             </motion.section>
         </div>
     );

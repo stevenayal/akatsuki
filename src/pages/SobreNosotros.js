@@ -55,10 +55,15 @@ function SobreNosotros() {
 
             <div className="text-center mt-5">
                 <img 
-                    src={process.env.PUBLIC_URL + '/akatsuki.jpg'} 
-                    alt="Akatsuki Logo" 
-                    className="img-fluid rounded-3 shadow"
-                    style={{ maxWidth: '200px' }}
+                    src={process.env.PUBLIC_URL + '/logo/logo_pain.jpg'} 
+                    alt="Pain Logo" 
+                    className="img-fluid rounded-3 shadow-lg"
+                    style={{ 
+                        width: '100%',
+                        maxHeight: '600px',
+                        objectFit: 'cover',
+                        borderRadius: '15px'
+                    }}
                 />
             </div>
         </div>

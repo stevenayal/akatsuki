@@ -102,10 +102,11 @@ function Cart() {
                                 <span>Gratis</span>
                             </div>
                             <hr />
-                            <div className="d-flex justify-content-between mb-3">
+                            <div className="d-flex justify-content-between mb-2">
                                 <strong>Total:</strong>
                                 <strong>{formatearPrecio(getCartTotal())}</strong>
                             </div>
+                            <p className="text-muted small text-end mb-3">IVA incluido</p>
 
                             <div className="mb-4">
                                 <h6 className="mb-3">Método de Pago</h6>

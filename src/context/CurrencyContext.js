@@ -5,7 +5,7 @@ const CurrencyContext = createContext();
 export function CurrencyProvider({ children }) {
     const [moneda, setMoneda] = useState('USD');
 
-    // Tasas de cambio (ejemplo)
+    // Tasas de cambio actualizadas
     const tasasDeCambio = {
         USD: 1,
         PYG: 7300,  // 1 USD = 7300 PYG (aproximado)
@@ -19,12 +19,19 @@ export function CurrencyProvider({ children }) {
             EUR: { style: 'currency', currency: 'EUR' }
         };
 
-        return new Intl.NumberFormat('es-PY', opciones[moneda]).format(cantidad * tasasDeCambio[moneda]);
+        // Si es PYG, convertimos primero y luego formateamos
+        if (moneda === 'PYG') {
+            const cantidadPYG = cantidad * tasasDeCambio[moneda];
+            return new Intl.NumberFormat('es-PY', opciones[moneda]).format(cantidadPYG);
+        }
+
+        // Para otras monedas
+        const cantidadConvertida = cantidad * tasasDeCambio[moneda];
+        return new Intl.NumberFormat('es-PY', opciones[moneda]).format(cantidadConvertida);
     };
 
-    const convertirPrecio = (precioUSD, monedaDestino) => {
-        const precioConvertido = precioUSD * tasasDeCambio[monedaDestino];
-        return formatearPrecio(precioConvertido, monedaDestino);
+    const convertirPrecio = (precioUSD) => {
+        return formatearPrecio(precioUSD);
     };
 
     const value = {

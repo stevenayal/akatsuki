@@ -12,28 +12,28 @@ function Home() {
             nombre: "Túnica Akatsuki",
             descripcion: "Túnica oficial de Akatsuki, diseño original con nubes rojas",
             precio: 89.99,
-            imagen: "Túnica Akatsuki.jpg"
+            imagen: process.env.PUBLIC_URL + "/Túnica Akatsuki.webp"
         },
         {
             id: 2,
             nombre: "Mochila Akatsuki",
             descripcion: "Mochila espaciosa con diseño de nubes rojas, perfecta para ninjas",
             precio: 45.99,
-            imagen: "Mochila Akatsuki.jpg"
+            imagen: process.env.PUBLIC_URL + "/Mochila Akatsuki.jpg"
         },
         {
             id: 3,
             nombre: "Camiseta Akatsuki",
             descripcion: "Camiseta oficial con diseño de Akatsuki, material de alta calidad",
             precio: 29.99,
-            imagen: "Camiseta de Akatsuki.jpg"
+            imagen: process.env.PUBLIC_URL + "/Camiseta de Akatsuki.jpg"
         },
         {
             id: 4,
             nombre: "Suéter Akatsuki",
             descripcion: "Suéter cálido con diseño de nubes rojas",
             precio: 49.99,
-            imagen: "Suéter de nube Akatsuki.jpg"
+            imagen: process.env.PUBLIC_URL + "/Suéter de nube Akatsuki.jpg"
         }
     ];
 
@@ -48,111 +48,79 @@ function Home() {
                     <div className="col-md-6 text-center text-md-start">
                         <motion.h1 
                             className="display-4 mb-4"
-                            initial={{ opacity: 0, y: -20 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.8 }}
                         >
-                            Bienvenido a Akatsuki
+                            Bienvenido a Akatsuki Store
                         </motion.h1>
                         <motion.p 
                             className="lead mb-4"
-                            initial={{ opacity: 0, y: -20 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            Descubre nuestra colección exclusiva de productos. 
-                            Calidad y estilo en cada artículo que ofrecemos.
+                            Descubre nuestra colección exclusiva de productos inspirados en el universo de Naruto.
                         </motion.p>
                         <motion.div
-                            initial={{ opacity: 0, y: -20 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
                         >
                             <Link to="/productos" className="btn btn-light btn-lg">
-                                Ver productos
+                                Ver Productos
                             </Link>
                         </motion.div>
                     </div>
-                    <motion.div 
-                        className="col-md-6 text-center"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <img
-                            src={process.env.PUBLIC_URL + '/logo/akatsuki-group-jerri-tointon.jpg'}
-                            alt="Akatsuki Group"
-                            className="img-fluid rounded shadow"
-                            style={{ 
-                                maxHeight: '500px',
-                                width: 'auto',
-                                objectFit: 'contain',
-                                filter: 'drop-shadow(0 0 10px rgba(0,0,0,0.3))',
-                                borderRadius: '10px'
-                            }}
+                    <div className="col-md-6">
+                        <motion.img
+                            src={process.env.PUBLIC_URL + "/logo.png"}
+                            alt="Akatsuki Logo"
+                            className="img-fluid"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8 }}
                         />
-                    </motion.div>
+                    </div>
                 </div>
 
-                <motion.section 
-                    className="mb-5"
+                <motion.div
+                    className="row mb-5"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                    <h2 className="text-center mb-5">¿Por qué elegirnos?</h2>
-                    <div className="row g-4">
-                        <div className="col-md-4">
-                            <div className="card h-100 text-center p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', border: 'none' }}>
-                                <div className="card-body">
-                                    <div className="display-4 mb-3">
-                                        <FaStar className="text-white" size={50} />
-                                    </div>
-                                    <h3 className="h4 mb-3 text-white">Calidad Premium</h3>
-                                    <p className="card-text text-white">
-                                        Productos seleccionados con los más altos estándares de calidad.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card h-100 text-center p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', border: 'none' }}>
-                                <div className="card-body">
-                                    <div className="display-4 mb-3">
-                                        <FaCreditCard className="text-white" size={50} />
-                                    </div>
-                                    <h3 className="h4 mb-3 text-white">Pago Seguro</h3>
-                                    <p className="card-text text-white">
-                                        Múltiples métodos de pago seguros y confiables.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card h-100 text-center p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', border: 'none' }}>
-                                <div className="card-body">
-                                    <div className="display-4 mb-3">
-                                        <FaHeadset className="text-white" size={50} />
-                                    </div>
-                                    <h3 className="h4 mb-3 text-white">Atención 24/7</h3>
-                                    <p className="card-text text-white">
-                                        Soporte al cliente disponible en todo momento.
-                                    </p>
-                                </div>
-                            </div>
+                    <div className="col-md-4 mb-4">
+                        <div className="text-center">
+                            <FaStar className="display-4 mb-3" />
+                            <h3>Productos Exclusivos</h3>
+                            <p>Diseños únicos y de alta calidad</p>
                         </div>
                     </div>
-                </motion.section>
+                    <div className="col-md-4 mb-4">
+                        <div className="text-center">
+                            <FaCreditCard className="display-4 mb-3" />
+                            <h3>Pago Seguro</h3>
+                            <p>Múltiples métodos de pago</p>
+                        </div>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                        <div className="text-center">
+                            <FaHeadset className="display-4 mb-3" />
+                            <h3>Soporte 24/7</h3>
+                            <p>Atención al cliente personalizada</p>
+                        </div>
+                    </div>
+                </motion.div>
 
-                <motion.section 
-                    className="py-5"
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.8 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
                 >
                     <h2 className="text-center mb-4">Productos Destacados</h2>
                     <ProductCarousel productos={productosDestacados} />
-                </motion.section>
+                </motion.div>
             </div>
         </div>
     );

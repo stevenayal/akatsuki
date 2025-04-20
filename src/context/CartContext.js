@@ -4,6 +4,7 @@ const CartContext = createContext();
 
 export function CartProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
+    const [discount, setDiscount] = useState(0);
 
     const addToCart = (product) => {
         setCartItems(prevItems => {
@@ -24,25 +25,34 @@ export function CartProvider({ children }) {
     };
 
     const updateQuantity = (productId, quantity) => {
-        if (quantity < 1) {
-            removeFromCart(productId);
-            return;
-        }
+        if (quantity < 1) return;
         setCartItems(prevItems =>
             prevItems.map(item =>
-                item.id === productId
-                    ? { ...item, quantity }
-                    : item
+                item.id === productId ? { ...item, quantity } : item
             )
         );
     };
 
-    const clearCart = () => {
-        setCartItems([]);
+    const applyDiscount = (discountPercentage) => {
+        setDiscount(discountPercentage);
     };
 
-    const getCartTotal = () => {
-        return cartItems.reduce((total, item) => total + (item.precio * item.quantity), 0);
+    const clearCart = () => {
+        setCartItems([]);
+        setDiscount(0);
+    };
+
+    const getTotal = () => {
+        const subtotal = cartItems.reduce(
+            (total, item) => total + item.precio * item.quantity,
+            0
+        );
+        const discountAmount = (subtotal * discount) / 100;
+        return {
+            subtotal,
+            discount: discount,
+            total: subtotal - discountAmount
+        };
     };
 
     const getCartItemsCount = () => {
@@ -50,15 +60,19 @@ export function CartProvider({ children }) {
     };
 
     return (
-        <CartContext.Provider value={{
-            cartItems,
-            addToCart,
-            removeFromCart,
-            updateQuantity,
-            clearCart,
-            getCartTotal,
-            getCartItemsCount
-        }}>
+        <CartContext.Provider
+            value={{
+                cartItems,
+                addToCart,
+                removeFromCart,
+                updateQuantity,
+                clearCart,
+                applyDiscount,
+                getTotal,
+                discount,
+                getCartItemsCount
+            }}
+        >
             {children}
         </CartContext.Provider>
     );
@@ -67,7 +81,7 @@ export function CartProvider({ children }) {
 export function useCart() {
     const context = useContext(CartContext);
     if (!context) {
-        throw new Error('useCart debe ser usado dentro de un CartProvider');
+        throw new Error('useCart must be used within a CartProvider');
     }
     return context;
 } 

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
-import { FaTrash, FaMinus, FaPlus, FaMoneyBill, FaCreditCard, FaUniversity } from 'react-icons/fa';
+import { FaTrash, FaMinus, FaPlus, FaMoneyBill, FaCreditCard, FaUniversity, FaTicketAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 function Cart() {
-    const { cartItems, removeFromCart, updateQuantity, getCartTotal } = useCart();
+    const { cartItems, removeFromCart, updateQuantity, getTotal, applyDiscount, discount } = useCart();
     const { formatearPrecio } = useCurrency();
     const [metodoPago, setMetodoPago] = useState('');
+    const [cupon, setCupon] = useState('');
 
     const handleProcederPago = () => {
         if (!metodoPago) {
@@ -17,6 +18,21 @@ function Cart() {
         }
         // Aquí iría la lógica para proceder con el pago
         toast.success('Procesando pago...');
+    };
+
+    const handleAplicarCupon = () => {
+        // Aquí iría la lógica para validar el cupón
+        // Por ahora, usaremos un cupón de ejemplo
+        if (cupon.toUpperCase() === 'AKATSUKI10') {
+            applyDiscount(10);
+            toast.success('¡Cupón aplicado con éxito!');
+        } else if (cupon.toUpperCase() === 'AKATSUKI20') {
+            applyDiscount(20);
+            toast.success('¡Cupón aplicado con éxito!');
+        } else {
+            toast.error('Cupón no válido');
+        }
+        setCupon('');
     };
 
     if (cartItems.length === 0) {
@@ -30,6 +46,8 @@ function Cart() {
             </div>
         );
     }
+
+    const { subtotal, total } = getTotal();
 
     return (
         <div className="container mt-5">
@@ -93,18 +111,37 @@ function Cart() {
                         <div className="card-body">
                             <h5 className="card-title">Resumen del Pedido</h5>
                             <hr />
+                            <div className="mb-3">
+                                <div className="input-group">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Código de cupón"
+                                        value={cupon}
+                                        onChange={(e) => setCupon(e.target.value)}
+                                    />
+                                    <button
+                                        className="btn btn-outline-dark"
+                                        onClick={handleAplicarCupon}
+                                    >
+                                        <FaTicketAlt />
+                                    </button>
+                                </div>
+                                <small className="text-muted">Prueba con: AKATSUKI10 o AKATSUKI20</small>
+                            </div>
                             <div className="d-flex justify-content-between mb-3">
                                 <span>Subtotal:</span>
-                                <span>{formatearPrecio(getCartTotal())}</span>
+                                <span>{formatearPrecio(subtotal)}</span>
                             </div>
+                            {discount > 0 && (
+                                <div className="d-flex justify-content-between mb-3">
+                                    <span>Descuento ({discount}%):</span>
+                                    <span>-{formatearPrecio((subtotal * discount) / 100)}</span>
+                                </div>
+                            )}
                             <div className="d-flex justify-content-between mb-3">
-                                <span>Envío:</span>
-                                <span>Gratis</span>
-                            </div>
-                            <hr />
-                            <div className="d-flex justify-content-between mb-2">
-                                <strong>Total:</strong>
-                                <strong>{formatearPrecio(getCartTotal())}</strong>
+                                <span>Total:</span>
+                                <span>{formatearPrecio(total)}</span>
                             </div>
                             <p className="text-muted small text-end mb-3">IVA incluido</p>
 

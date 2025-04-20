@@ -100,7 +100,7 @@ function ProductCarousel({ productos }) {
                             <ProductCard>
                                 <ProductImage>
                                     <img
-                                        src={process.env.PUBLIC_URL + '/productos/' + producto.imagen}
+                                        src={producto.imagen}
                                         alt={producto.nombre}
                                         onError={handleImageError}
                                     />

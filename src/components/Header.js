@@ -128,7 +128,7 @@ function Header() {
                                     style={{ width: '80px', paddingLeft: '30px' }}
                                 >
                                     {['USD', 'PYG', 'EUR'].map(codigo => {
-                                        const bandera = getBandera(codigo);
+                                        const { codigo: codigoPais } = getBandera(codigo);
                                         return (
                                             <option key={codigo} value={codigo}>
                                                 {codigo}

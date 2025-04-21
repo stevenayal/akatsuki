@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { FaTrash, FaMinus, FaPlus, FaMoneyBill, FaCreditCard, FaUniversity, FaTicketAlt } from 'react-icons/fa';
@@ -10,6 +10,30 @@ function Cart() {
     const { formatearPrecio } = useCurrency();
     const [metodoPago, setMetodoPago] = useState('');
     const [cupon, setCupon] = useState('');
+    const [codigoGenerado, setCodigoGenerado] = useState('');
+
+    // Función para generar un código aleatorio
+    const generarCodigoAleatorio = () => {
+        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let codigo = '';
+        for (let i = 0; i < 6; i++) {
+            codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        }
+        return codigo;
+    };
+
+    // Función para determinar el porcentaje de descuento basado en la cantidad de productos
+    const determinarDescuento = (cantidad) => {
+        if (cantidad > 3) return 50;
+        if (cantidad >= 2) return 35;
+        return 10;
+    };
+
+    // Generar un nuevo código cuando cambia la cantidad de productos
+    useEffect(() => {
+        const nuevoCodigo = generarCodigoAleatorio() + determinarDescuento(cartItems.length);
+        setCodigoGenerado(nuevoCodigo);
+    }, [cartItems.length]);
 
     const handleProcederPago = () => {
         if (!metodoPago) {
@@ -21,14 +45,10 @@ function Cart() {
     };
 
     const handleAplicarCupon = () => {
-        // Aquí iría la lógica para validar el cupón
-        // Por ahora, usaremos un cupón de ejemplo
-        if (cupon.toUpperCase() === 'AKATSUKI10') {
-            applyDiscount(10);
-            toast.success('¡Cupón aplicado con éxito!');
-        } else if (cupon.toUpperCase() === 'AKATSUKI20') {
-            applyDiscount(20);
-            toast.success('¡Cupón aplicado con éxito!');
+        if (cupon.toUpperCase() === codigoGenerado) {
+            const porcentajeDescuento = determinarDescuento(cartItems.length);
+            applyDiscount(porcentajeDescuento);
+            toast.success(`¡Cupón aplicado con éxito! ${porcentajeDescuento}% de descuento`);
         } else {
             toast.error('Cupón no válido');
         }
@@ -116,7 +136,7 @@ function Cart() {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        placeholder="Código de cupón"
+                                        placeholder="Ingresa tu cupón"
                                         value={cupon}
                                         onChange={(e) => setCupon(e.target.value)}
                                     />
@@ -127,7 +147,9 @@ function Cart() {
                                         <FaTicketAlt />
                                     </button>
                                 </div>
-                                <small className="text-muted">Prueba con: AKATSUKI10 o AKATSUKI20</small>
+                                <small className="text-muted">
+                                    Te ganaste un cupón de descuento: {codigoGenerado}
+                                </small>
                             </div>
                             <div className="d-flex justify-content-between mb-3">
                                 <span>Subtotal:</span>

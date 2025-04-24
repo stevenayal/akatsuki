@@ -63,7 +63,16 @@ function ProductCarousel({ productos }) {
 
     // Función para manejar errores de carga de imagen
     const handleImageError = (e) => {
-        e.target.src = process.env.PUBLIC_URL + '/akatsuki.jpg'; // Imagen de respaldo si falla la carga
+        e.target.src = process.env.PUBLIC_URL + '/akatsuki.jpg';
+        e.target.onerror = null; // Prevenir bucle infinito
+    };
+
+    // Función para obtener la ruta correcta de la imagen
+    const getImagePath = (imagen) => {
+        if (imagen.startsWith('http')) {
+            return imagen;
+        }
+        return process.env.PUBLIC_URL + '/productos/' + imagen;
     };
 
     const siguienteSlide = () => {
@@ -100,9 +109,10 @@ function ProductCarousel({ productos }) {
                             <ProductCard>
                                 <ProductImage>
                                     <img
-                                        src={producto.imagen}
+                                        src={getImagePath(producto.imagen)}
                                         alt={producto.nombre}
                                         onError={handleImageError}
+                                        loading="lazy"
                                     />
                                 </ProductImage>
                                 <ProductBody>

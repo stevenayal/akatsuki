@@ -15,7 +15,7 @@ function ProductList() {
                 nombre: "Túnica Akatsuki",
                 descripcion: "Túnica oficial de Akatsuki, diseño original con nubes rojas",
                 precio: 89.99,
-                imagen: "Túnica Akatsuki.jpg",
+                imagen: "Túnica Akatsuki.webp",
                 categoria: "ropa"
             },
             {

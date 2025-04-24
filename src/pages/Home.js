@@ -12,28 +12,28 @@ function Home() {
             nombre: "Túnica Akatsuki",
             descripcion: "Túnica oficial de Akatsuki, diseño original con nubes rojas",
             precio: 89.99,
-            imagen: process.env.PUBLIC_URL + "/Túnica Akatsuki.webp"
+            imagen: "Túnica Akatsuki.webp"
         },
         {
             id: 2,
             nombre: "Mochila Akatsuki",
             descripcion: "Mochila espaciosa con diseño de nubes rojas, perfecta para ninjas",
             precio: 45.99,
-            imagen: process.env.PUBLIC_URL + "/Mochila Akatsuki.jpg"
+            imagen: "Mochila Akatsuki.jpg"
         },
         {
             id: 3,
             nombre: "Camiseta Akatsuki",
             descripcion: "Camiseta oficial con diseño de Akatsuki, material de alta calidad",
             precio: 29.99,
-            imagen: process.env.PUBLIC_URL + "/Camiseta de Akatsuki.jpg"
+            imagen: "Camiseta de Akatsuki.jpg"
         },
         {
             id: 4,
             nombre: "Suéter Akatsuki",
             descripcion: "Suéter cálido con diseño de nubes rojas",
             precio: 49.99,
-            imagen: process.env.PUBLIC_URL + "/Suéter de nube Akatsuki.jpg"
+            imagen: "Suéter de nube Akatsuki.jpg"
         }
     ];
 
